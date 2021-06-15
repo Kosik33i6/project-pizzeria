@@ -52,14 +52,29 @@
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
 
+  class Product {
+    constructor() {
+      const thisProduct = this;
+
+      console.log(thisProduct);
+    }
+  }
+
   const app = {
+
+    initMenu: function() {
+      const testProduct = new Product();
+      console.log('test product: ', testProduct);
+    },
+
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+      // console.log('*** App starting ***');
+      // console.log('thisApp:', thisApp);
+      // console.log('classNames:', classNames);
+      // console.log('settings:', settings);
+      // console.log('templates:', templates);
+      thisApp.initMenu();
     },
   };
 
