@@ -53,30 +53,61 @@
   };
 
   class Product {
-    constructor() {
+    constructor(id, data) {
+      const thisProduct = this;
+      thisProduct.id = id;
+      thisProduct.data = data;
+
+      // * render after creating inctance
+      thisProduct.renderInMenu();
+    }
+    renderInMenu() {
       const thisProduct = this;
 
-      console.log(thisProduct);
+      //  * generate HTMLL based on template
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+
+      // * create element using utils.createElementFromHTML
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+
+      //  * find menu container
+      const menuContainer = document.querySelector(select.containerOf.menu);
+
+      //  * add element to menu
+      menuContainer.appendChild(thisProduct.element);
     }
   }
 
   const app = {
 
     initMenu: function() {
-      const testProduct = new Product();
-      console.log('test product: ', testProduct);
+      const thisApp = this;
+
+      for(let productData in thisApp.data.products) {
+        new Product(productData, thisApp.data.products[productData]);
+        console.log(new Product(productData, thisApp.data.products[productData]));
+      }
+    },
+
+    initData: function() {
+      const thisApp = this;
+      // console.log(this);
+      thisApp.data = dataSource;
     },
 
     init: function(){
       const thisApp = this;
       // console.log('*** App starting ***');
       // console.log('thisApp:', thisApp);
-      // console.log('classNames:', classNames);
-      // console.log('settings:', settings);
+      console.log('classNames:', classNames);
+      console.log('settings:', settings);
       // console.log('templates:', templates);
+
+      thisApp.initData();
       thisApp.initMenu();
     },
   };
+
 
   app.init();
 }
