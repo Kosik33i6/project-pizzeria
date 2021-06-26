@@ -97,7 +97,7 @@
       thisProduct.renderInMenu();
       thisProduct.getElements();
       thisProduct.initAccordion();
-      thisProduct.initOrderFrom();
+      thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
     }
@@ -165,7 +165,7 @@
       });
     }
 
-    initOrderFrom() {
+    initOrderForm() {
       const thisProduct = this;
 
       thisProduct.dom.form.addEventListener('submit', function(event){
@@ -184,6 +184,7 @@
       thisProduct.dom.cartButton.addEventListener('click', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
     }
 
@@ -233,10 +234,97 @@
           }
         }
       }
+
+      // * create singlePrice data for cart and assignment price
+      thisProduct.priceSingle = price;
+
+      // * update price
       price *= thisProduct.amountWidget.value;
+
+      // * create total price data for cart
+      thisProduct.totalPrice = price;
+
       // * update calculated price in the HTML
       thisProduct.dom.priceElem.innerHTML = price;
     }
+
+    addToCart() {
+      const thisProduct = this;
+
+      app.cart.add(thisProduct.prepareCartProduct());
+    }
+
+    prepareCartProduct() {
+      const thisProduct = this;
+
+      const productSummary = {};
+
+      productSummary.id = thisProduct.id;
+      productSummary.name = thisProduct.data.name;
+      productSummary.amount = thisProduct.amountWidget.value;
+      productSummary.priceSigle = thisProduct.priceSingle;
+      productSummary.price = thisProduct.totalPrice;
+      // thisProduct.prepareCartProductParams();
+
+      return productSummary;
+    }
+
+    prepareCartProductParams() {
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
+      const params = {};
+
+      console.log('FORMAT DATA: ', formData);
+
+      // for very category (param)
+      for(let paramId in thisProduct.data.params) {
+
+        console.log('-----------FIRST LOOOP BEGINING-----------------');
+
+        const param = thisProduct.data.params[paramId];
+
+        console.log('paramId: ', paramId);
+        console.log('thisProduct.data.params : ', thisProduct.data.params);
+        console.log('thisProduct.data.params[paramId]: ', thisProduct.data.params[paramId]);
+        console.log('param: ', param);
+
+        // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
+
+        // for every option in this category
+        for(let optionId in param.options) {
+
+          console.log('******SECOND LOOP BEGINING******');
+          console.log('optionId in second loop: ', optionId);
+          console.log('param.options in second loop: ', param.options);
+
+          const option = param.options[optionId];
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          console.log('option in second LOOP: ', option);
+
+          if(optionSelected) {
+            // option is selected!
+            params[paramId].options[optionId] = option.label;
+
+            console.log('option in second loop in if statement: ', option);
+          }
+
+          console.log('******SECOND LOOP END******');
+        }
+
+        console.log('============FIRST LOOP END===========');
+      }
+
+      console.log('params: ', params);
+
+      return params;
+    }
+
   }
 
   class AmountWidget {
@@ -313,8 +401,6 @@
 
       thisCart.getElements(element);
       thisCart.initActions();
-
-      console.log('new Cart', thisCart);
     }
 
     getElements(element) {
@@ -332,6 +418,14 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function() {
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+    }
+
+    add(menuProduct) {
+      const thisCart = this;
+
+      console.log('add product to card');
+      // console.log(menuProduct);
+      // console.log(thisCart);
     }
   }
 
