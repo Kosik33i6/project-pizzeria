@@ -264,7 +264,7 @@
       productSummary.amount = thisProduct.amountWidget.value;
       productSummary.priceSigle = thisProduct.priceSingle;
       productSummary.price = thisProduct.totalPrice;
-      // thisProduct.prepareCartProductParams();
+      productSummary.params = thisProduct.prepareCartProductParams();
 
       return productSummary;
     }
@@ -275,19 +275,19 @@
       const formData = utils.serializeFormToObject(thisProduct.dom.form);
       const params = {};
 
-      console.log('FORMAT DATA: ', formData);
+      // console.log('FORMAT DATA: ', formData);
 
       // for very category (param)
       for(let paramId in thisProduct.data.params) {
 
-        console.log('-----------FIRST LOOOP BEGINING-----------------');
+        // console.log('-----------FIRST LOOOP BEGINING-----------------');
 
         const param = thisProduct.data.params[paramId];
 
-        console.log('paramId: ', paramId);
-        console.log('thisProduct.data.params : ', thisProduct.data.params);
-        console.log('thisProduct.data.params[paramId]: ', thisProduct.data.params[paramId]);
-        console.log('param: ', param);
+        // console.log('paramId: ', paramId);
+        // console.log('thisProduct.data.params : ', thisProduct.data.params);
+        // console.log('thisProduct.data.params[paramId]: ', thisProduct.data.params[paramId]);
+        // console.log('param: ', param);
 
         // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
         params[paramId] = {
@@ -298,29 +298,29 @@
         // for every option in this category
         for(let optionId in param.options) {
 
-          console.log('******SECOND LOOP BEGINING******');
-          console.log('optionId in second loop: ', optionId);
-          console.log('param.options in second loop: ', param.options);
+          // console.log('******SECOND LOOP BEGINING******');
+          // console.log('optionId in second loop: ', optionId);
+          // console.log('param.options in second loop: ', param.options);
 
           const option = param.options[optionId];
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
-          console.log('option in second LOOP: ', option);
+          // console.log('option in second LOOP: ', option);
 
           if(optionSelected) {
             // option is selected!
             params[paramId].options[optionId] = option.label;
 
-            console.log('option in second loop in if statement: ', option);
+            // console.log('option in second loop in if statement: ', option);
           }
 
-          console.log('******SECOND LOOP END******');
+          // console.log('******SECOND LOOP END******');
         }
 
-        console.log('============FIRST LOOP END===========');
+        // console.log('============FIRST LOOP END===========');
       }
 
-      console.log('params: ', params);
+      // console.log('params: ', params);
 
       return params;
     }
@@ -410,6 +410,7 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = document.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = document.querySelector(select.cart.productList);
     }
 
     initActions() {
@@ -424,9 +425,19 @@
       const thisCart = this;
 
       console.log('add product to card');
-      // console.log(menuProduct);
-      // console.log(thisCart);
+      console.log(menuProduct);
+      console.log(thisCart);
+
+      //  generate HTML
+      const generatedHTML = templates.cartProduct(menuProduct);
+
+      //  create element using utils.createElementFromHTML
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      //  add element to cart list
+      thisCart.dom.productList.appendChild(generatedDOM);
     }
+
   }
 
   const app = {
