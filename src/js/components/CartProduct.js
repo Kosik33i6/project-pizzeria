@@ -5,7 +5,7 @@ import AmountWidget from './AmountWidget.js';
 class CartProduct {
   constructor(menuProduct, element) {
     const thisCartProduct = this;
-    console.log(menuProduct);
+
     thisCartProduct.id = menuProduct.id;
     thisCartProduct.amount = menuProduct.amount;
     thisCartProduct.name = menuProduct.name;

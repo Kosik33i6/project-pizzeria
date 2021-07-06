@@ -13,16 +13,16 @@ const app = {
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
     const idFromHash = window.location.hash.replace('#/', '');
-    let pageMatchinghash = thisApp.pages[0].id;
+    let pageMatchingHash = thisApp.pages[0].id;
 
     for(let page of thisApp.pages) {
-      if(page.id === idFromHash) {
-        pageMatchinghash = page.id;
+      if(page.id == idFromHash) {
+        pageMatchingHash = page.id;
         break;
       }
-
-      thisApp.activatePage(pageMatchinghash);
     }
+
+    thisApp.activatePage(pageMatchingHash);
 
     for(let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {
@@ -36,7 +36,6 @@ const app = {
         thisApp.activatePage(id);
 
         // change URL hash
-        console.log(window.location.hash);
         window.location.hash = '#/' + id;
       });
     }
@@ -47,14 +46,14 @@ const app = {
 
     // add class active to matching pages, remove class active from non-matching pages
     for(let page of thisApp.pages) {
-      page.classList.toggle(classNames.pages.active, page.id === pageId);
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
 
     // add class active to matching links, remove class active from non-matching links
     for(let link of thisApp.navLinks) {
       link.classList.toggle(
         classNames.nav.active,
-        link.getAttribute('href') === '#' + pageId
+        link.getAttribute('href') == '#' + pageId
       );
     }
 
@@ -66,7 +65,6 @@ const app = {
     const bookingContainer = document.querySelector(select.containerOf.booking);
 
     thisApp.booking = new Booking(bookingContainer);
-    console.log(thisApp.booking);
   },
 
   initCart: function() {
