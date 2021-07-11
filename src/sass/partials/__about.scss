@@ -1,0 +1,55 @@
+.about {
+  &__images-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  &__link {
+    flex-basis: 49%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    height: 170px;
+  }
+  &__link-title {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-light;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__title-container {
+    margin-top: 8px;
+    height: 170px;
+    background-color: $color-main;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color-light;
+  }
+  &__title-main {
+    display: block;
+    font-size: 30px;
+  }
+  &__title-sub {
+    display: block;
+    font-size: 16px;
+  }
+
+}

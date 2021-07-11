@@ -18,6 +18,7 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.initActions();
+    console.log(thisBooking.booked);
   }
 
   getData() {
@@ -41,14 +42,14 @@ class Booking {
     };
 
     const urls = {
-      booking:        settings.db.url + '/' + settings.db.booking
-                                      + '?' + params.booking.join('&'),
+      booking: settings.db.url + '/' + settings.db.booking
+                               + '?' + params.booking.join('&'),
 
-      eventsCurrent:  settings.db.url + '/' + settings.db.event
-                                      + '?' +params.eventsCurrent.join('&'),
+      eventsCurrent: settings.db.url + '/' + settings.db.event
+                                     + '?' +params.eventsCurrent.join('&'),
 
-      eventsRepeat:   settings.db.url + '/' + settings.db.event
-                                      + '?' +params.eventsRepeat.join('&'),
+      eventsRepeat: settings.db.url + '/' + settings.db.event
+                                    + '?' +params.eventsRepeat.join('&'),
     };
 
     Promise.all([
