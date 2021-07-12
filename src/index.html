@@ -8,6 +8,7 @@
     <title>Pizzeria</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="vendor/range-slider.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -66,7 +67,7 @@
 
     <div id="pages">
         <section id="home">
-            <div class="home-wrapper container"></div>
+            <div class="home container"></div>
         </section>
         <section id="order">
             <div id="product-list" class="product-list container"></div>
@@ -77,6 +78,7 @@
     </div>
 
     <script id="template-home-page" type="text/x-handlebars-template">
+        <div class="home__wrapper">
         <div class="about">
           <div class="about__images-container">
             <a href="" class="about__link">
@@ -95,6 +97,86 @@
             </h2>
           </div>
         </div>
+
+        <div class="carousel-container">
+
+          <div class="main-carousel">
+
+            <div class="carousel-cell">
+              <div class="testimonials">
+                <div class="testimonials__image-container">
+                  <img class="testimonials__img" src="images/assets/pizza-3.jpg" alt="">
+                </div>
+                <div class="testimonials__text-container">
+                  <h4 class="testimonials__title">Lorem Ipsum</h4>
+                  <p class="testimonials__descripion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab nihil illum optio labore inventore repellat! Animi, nihil neque?</p>
+                  <span class="testimonials__author">-Margaret osborne</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-cell">
+              <div class="testimonials">
+                <div class="testimonials__image-container">
+                  <img class="testimonials__img" src="images/assets/pizza-3.jpg" alt="">
+                </div>
+                <div class="testimonials__text-container">
+                  <h4 class="testimonials__title">Lorem Ipsum</h4>
+                  <p class="testimonials__descripion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab nihil illum optio labore inventore repellat! Animi, nihil neque?</p>
+                  <span class="testimonials__author">-Margaret osborne</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-cell">
+               <div class="testimonials">
+                <div class="testimonials__image-container">
+                  <img class="testimonials__img" src="images/assets/pizza-3.jpg" alt="">
+                </div>
+                <div class="testimonials__text-container">
+                  <h4 class="testimonials__title">Lorem Ipsum</h4>
+                  <p class="testimonials__descripion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab nihil illum optio labore inventore repellat! Animi, nihil neque?</p>
+                  <span class="testimonials__author">-Margaret osborne</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="gallery">
+          <div class="gallery__images-container">
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-4.jpg" alt="meal" class="gallery__image">
+            </div>
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-5.jpg" alt="meal" class="gallery__image">
+            </div>
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-6.jpg" alt="pizza" class="gallery__image">
+            </div>
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-7.jpg" alt="open" class="gallery__image">
+            </div>
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-8.jpg" alt="make-a-cake" class="gallery__image">
+            </div>
+            <div class="gallery__image-container">
+              <div class="gallery__icons-box"><i class="gallery__icon fas fa-heart"></i><i class="gallery__icon fas fa-share-alt"></i></div>
+              <img src="images/assets/pizza-9.jpg" alt="venue" class="gallery__image">
+            </div>
+          </div>
+          <div class="gallery__description-container">
+            <a href="#" class="gallery__description">View more on Instagram</a>
+          </div>
+        </div>
+      </div>
     </script>
 
     <script id="template-cart-product" type="text/x-handlebars-template">
@@ -271,6 +353,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="vendor/range-slider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/app.js" type="module"></script>

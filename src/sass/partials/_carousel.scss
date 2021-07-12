@@ -1,0 +1,46 @@
+.carousel-container {
+  height: 550px;
+}
+
+.carousel-cell {
+  height: 100%;
+}
+
+.testimonials {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  &__image-container {
+    flex-basis: 35%;
+    padding-right: 25px;
+  }
+
+  &__img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  &__text-container {
+    height: 250px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 5px 0;
+  }
+
+  &__descripion {
+    font-size: 15px;
+  }
+
+  &__author {
+    font-style: italic;
+  }
+}

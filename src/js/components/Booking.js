@@ -18,7 +18,6 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.initActions();
-    console.log(thisBooking.booked);
   }
 
   getData() {
@@ -97,7 +96,6 @@ class Booking {
         }
       }
     }
-    console.log('thisBooking.booked: ', thisBooking.booked);
     thisBooking.updateDOM();
   }
 

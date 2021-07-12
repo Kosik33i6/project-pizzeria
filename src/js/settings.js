@@ -10,7 +10,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
-    home: '.home-wrapper',
+    home: '.home',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -39,6 +39,9 @@ export const select = {
       wrapper: '.hour-picker',
       input: 'input[type="range"]',
       output: '.output',
+    },
+    carousel: {
+      main: '.main-carousel',
     },
   },
   booking: {

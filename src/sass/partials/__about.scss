@@ -5,6 +5,7 @@
     justify-content: space-between;
 
   }
+
   &__link {
     flex-basis: 49%;
     border-radius: 5px;
@@ -12,16 +13,25 @@
     position: relative;
     height: 170px;
   }
+
   &__link-title {
     position: absolute;
+    width: 100%;
     margin: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: $color-light;
+    text-align: center;
     text-transform: uppercase;
     z-index: 1;
+    transition: all .3s ease;
   }
+
+  &__link:hover &__link-title {
+    top: 25%;
+  }
+
   &__img {
     position: absolute;
     top: 0;
@@ -30,23 +40,28 @@
     height: 100%;
     object-fit: cover;
   }
+
   &__title-container {
     margin-top: 8px;
     height: 170px;
+    border-radius: 5px;
     background-color: $color-main;
     display: flex;
     align-items: center;
   }
+
   &__title {
     width: 100%;
     text-transform: uppercase;
     text-align: center;
     color: $color-light;
   }
+
   &__title-main {
     display: block;
     font-size: 30px;
   }
+
   &__title-sub {
     display: block;
     font-size: 16px;
