@@ -50,6 +50,7 @@ class Booking {
       eventsRepeat: settings.db.url + '/' + settings.db.event
                                     + '?' +params.eventsRepeat.join('&'),
     };
+    console.log('urls: ', urls);
 
     Promise.all([
       fetch(urls.booking),
