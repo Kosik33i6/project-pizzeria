@@ -28,8 +28,27 @@
     transition: all .3s ease;
   }
 
+  &__link-subtitle {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    top: 125%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-light;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    z-index: 1;
+    transition: all .3s ease;
+  }
+
   &__link:hover &__link-title {
     top: 25%;
+  }
+
+  &__link:hover &__link-subtitle {
+    top: 75%
   }
 
   &__img {
